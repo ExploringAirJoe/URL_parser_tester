@@ -2,6 +2,6 @@
 #define RANDOM_URL_H
 
 #include "parsed_url.h"
-
+#include "tested_parser.h"
 
 #endif
