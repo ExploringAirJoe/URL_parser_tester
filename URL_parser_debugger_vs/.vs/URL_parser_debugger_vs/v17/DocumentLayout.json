@@ -40,9 +40,10 @@
               "RelativeDocumentMoniker": "src\\parsed_url.h",
               "ToolTip": "D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\parsed_url.h",
               "RelativeToolTip": "src\\parsed_url.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAACAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-11T14:28:35.728Z"
+              "WhenOpened": "2024-05-11T14:28:35.728Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -76,9 +77,10 @@
               "RelativeDocumentMoniker": "src\\tested_parser.h",
               "ToolTip": "D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\tested_parser.h",
               "RelativeToolTip": "src\\tested_parser.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-11T13:58:06.611Z"
+              "WhenOpened": "2024-05-11T13:58:06.611Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -88,7 +90,7 @@
               "RelativeDocumentMoniker": "src\\main.cpp",
               "ToolTip": "D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\main.cpp",
               "RelativeToolTip": "src\\main.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAWAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-05-11T13:56:14.929Z",
               "EditorCaption": ""
