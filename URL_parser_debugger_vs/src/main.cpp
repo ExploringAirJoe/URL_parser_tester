@@ -8,5 +8,8 @@
 
 int main()
 {
+	//²âÊÔ»ù´¡ºÏ·¨url
+	test_basic_legal_url();
 	
+	return 0;
 }

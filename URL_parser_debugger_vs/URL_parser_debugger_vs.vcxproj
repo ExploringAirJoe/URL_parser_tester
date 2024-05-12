@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClCompile Include="src\basic_url.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\parsed_url.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\basic_url.h" />

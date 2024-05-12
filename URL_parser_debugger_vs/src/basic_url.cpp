@@ -18,10 +18,19 @@ void test_basic_legal_url()
         json test_case_data = it.value();
 
         std::string url = test_case_data["url"];
-        ParsedURL refer_url;
-        // 可以在这里调用解析器函数，并将url传递给它进行解析
-        // 注意处理解析结果和异常
-        ParsedURL parsed_url = parser_test(url);
+        ParsedURL refer_parsed_url = read_parsed_url(test_case_data);//参照结果
+        ParsedURL parsed_url = parser_test(url);//URL解析器结果
         
+        bool parse_correct = compare_parsed_url(refer_parsed_url, parsed_url);//比较结果
+        //结果正确
+        if (parse_correct)
+        {
+            std::cout << "basic legal url " << url << " is parsed successfully!" << std::endl;
+        }
+        //结果错误
+        else
+        {
+            std::cout << "basic legal url " << url << " is parsed wrongly!" << std::endl;
+        }
     }
 }
