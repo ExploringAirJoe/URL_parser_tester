@@ -11,7 +11,7 @@ struct ParsedURL
 {
     std::string protocol;
     std::string hostname;
-    int port;
+    int port = 0;
     std::string path;
     std::map<std::string, std::string> query_params;
     std::string fragment;

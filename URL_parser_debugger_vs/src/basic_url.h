@@ -10,6 +10,8 @@
 
 using json = nlohmann::json;
 
-void test_basic_legal_url();//test url parser using basic legal urls
+void test_basic_legal_url();//测试基础合法url
+
+void test_basic_illegal_url();//测试基础非法url
 
 #endif
