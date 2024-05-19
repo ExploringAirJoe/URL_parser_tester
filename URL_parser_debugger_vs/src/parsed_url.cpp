@@ -117,7 +117,7 @@ std::string ParsedURL_to_url(ParsedURL& parsed_url)
     }
 
     // Add path (encoded)
-    url += url_encode(parsed_url.path);
+    url += parsed_url.path;
 
     // Add query parameters if any
     if (!parsed_url.query_params.empty()) {

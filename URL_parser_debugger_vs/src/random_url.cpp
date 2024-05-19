@@ -31,7 +31,7 @@ void test_random_legal_url()
     std::string random_fragment;
 
     //多次随机生成
-    for (int case_num = 0; case_num <= 10; case_num)
+    for (int case_num = 0; case_num <= 10; case_num++)
     {
         random_protocol = (rand() % 2 == 0) ? "http" : "https";
 
@@ -48,7 +48,7 @@ void test_random_legal_url()
         //random_query_params = (rand() % 2 == 0) ? "?param1=value1&param2=value2" : "";
 
         // Generate random fragment
-        random_fragment = (rand() % 2 == 0) ? "#section" : "";
+        random_fragment = (rand() % 2 == 0) ? "section" : "";
 
         //对refer_parsed_url进行赋值
         refer_parsed_url.protocol = random_protocol;
@@ -66,12 +66,12 @@ void test_random_legal_url()
         //结果正确
         if (parse_correct)
         {
-            std::cout << "basic legal url " << url << " is parsed successfully!" << std::endl;
+            std::cout << "random legal url " << url << " is parsed successfully!" << std::endl;
         }
         //结果错误
         else
         {
-            std::cout << "basic legal url " << url << " is parsed wrongly!" << std::endl;
+            std::cout << "random legal url " << url << " is parsed wrongly!" << std::endl;
         }
     }
 }
