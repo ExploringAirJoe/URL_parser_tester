@@ -3,6 +3,7 @@
 
 #include<string>
 #include<map>
+#include<regex>
 
 #include "parsed_url.h"
 

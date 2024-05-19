@@ -134,6 +134,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\parsed_url.cpp" />
     <ClCompile Include="src\random_url.cpp" />
+    <ClCompile Include="src\tested_parser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\basic_url.h" />
