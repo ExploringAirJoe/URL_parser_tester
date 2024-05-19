@@ -112,12 +112,19 @@ std::string ParsedURL_to_url(ParsedURL& parsed_url)
     url += parsed_url.hostname;
 
     // Add port if it's specified and not the default for the protocol
-    if (parsed_url.port != 0) {
+    if (parsed_url.port > 0) {
         url += ":" + std::to_string(parsed_url.port);
     }
 
     // Add path (encoded)
-    url += parsed_url.path;
+    if (parsed_url.path == "")
+    {
+        url += "/";
+    }
+    else
+    {
+        url += parsed_url.path;
+    }
 
     // Add query parameters if any
     if (!parsed_url.query_params.empty()) {

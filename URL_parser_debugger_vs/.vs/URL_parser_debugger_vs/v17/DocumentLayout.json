@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F3478873-09E7-40A6-ABF2-7C77365BA949}|URL_parser_debugger_vs.vcxproj|D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\parsed_url.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F3478873-09E7-40A6-ABF2-7C77365BA949}|URL_parser_debugger_vs.vcxproj|solutionrelative:src\\parsed_url.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F3478873-09E7-40A6-ABF2-7C77365BA949}|URL_parser_debugger_vs.vcxproj|D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\random_url.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F3478873-09E7-40A6-ABF2-7C77365BA949}|URL_parser_debugger_vs.vcxproj|solutionrelative:src\\random_url.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3478873-09E7-40A6-ABF2-7C77365BA949}|URL_parser_debugger_vs.vcxproj|D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\tested_parser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F3478873-09E7-40A6-ABF2-7C77365BA949}|URL_parser_debugger_vs.vcxproj|solutionrelative:src\\tested_parser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F3478873-09E7-40A6-ABF2-7C77365BA949}|URL_parser_debugger_vs.vcxproj|D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\parsed_url.cpp||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{F3478873-09E7-40A6-ABF2-7C77365BA949}|URL_parser_debugger_vs.vcxproj|solutionrelative:src\\parsed_url.cpp||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3478873-09E7-40A6-ABF2-7C77365BA949}|URL_parser_debugger_vs.vcxproj|D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F3478873-09E7-40A6-ABF2-7C77365BA949}|URL_parser_debugger_vs.vcxproj|solutionrelative:src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\basic_url\\basic_legal_url.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:basic_url\\basic_legal_url.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F3478873-09E7-40A6-ABF2-7C77365BA949}|URL_parser_debugger_vs.vcxproj|D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\random_url.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F3478873-09E7-40A6-ABF2-7C77365BA949}|URL_parser_debugger_vs.vcxproj|solutionrelative:src\\random_url.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3478873-09E7-40A6-ABF2-7C77365BA949}|URL_parser_debugger_vs.vcxproj|D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F3478873-09E7-40A6-ABF2-7C77365BA949}|URL_parser_debugger_vs.vcxproj|solutionrelative:src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,72 +30,68 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "basic_legal_url.json",
+              "DocumentMoniker": "D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\basic_url\\basic_legal_url.json",
+              "RelativeDocumentMoniker": "basic_url\\basic_legal_url.json",
+              "ToolTip": "D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\basic_url\\basic_legal_url.json",
+              "RelativeToolTip": "basic_url\\basic_legal_url.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-19T15:43:46.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "parsed_url.cpp",
               "DocumentMoniker": "D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\parsed_url.cpp",
               "RelativeDocumentMoniker": "src\\parsed_url.cpp",
               "ToolTip": "D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\parsed_url.cpp",
               "RelativeToolTip": "src\\parsed_url.cpp",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAowFgAAAAJAAAA",
+              "ViewState": "AQIAAGYAAAAAAAAAAIA3wHkAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-05-19T12:02:48.668Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T14:29:26.127Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "tested_parser.cpp",
-              "DocumentMoniker": "D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\tested_parser.cpp",
-              "RelativeDocumentMoniker": "src\\tested_parser.cpp",
-              "ToolTip": "D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\tested_parser.cpp",
-              "RelativeToolTip": "src\\tested_parser.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-05-19T12:01:05.129Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "random_url.cpp",
               "DocumentMoniker": "D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\random_url.cpp",
               "RelativeDocumentMoniker": "src\\random_url.cpp",
               "ToolTip": "D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\random_url.cpp",
               "RelativeToolTip": "src\\random_url.cpp",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAADIAAAAvAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAACwAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-05-19T11:58:01.562Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "random_url.h",
               "DocumentMoniker": "D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\random_url.h",
               "RelativeDocumentMoniker": "src\\random_url.h",
               "ToolTip": "D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\random_url.h",
               "RelativeToolTip": "src\\random_url.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAaAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-19T11:57:34.991Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T11:57:34.991Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "main.cpp",
               "DocumentMoniker": "D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\main.cpp",
               "RelativeDocumentMoniker": "src\\main.cpp",
               "ToolTip": "D:\\Coding\\C\u002B\u002B_Projects\\URL_parser_debugger\\URL_parser_debugger_vs\\src\\main.cpp",
               "RelativeToolTip": "src\\main.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAZAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-05-11T13:56:14.929Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-11T13:56:14.929Z"
             }
           ]
         }

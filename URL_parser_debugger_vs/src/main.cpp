@@ -8,6 +8,9 @@
 
 int main()
 {
+	//初始化种子，服务于随机化测试
+	srand((unsigned int)time(NULL));
+
 	//测试基础合法url
 	test_basic_legal_url();
 
