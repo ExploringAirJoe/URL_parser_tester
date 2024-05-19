@@ -1,0 +1,53 @@
+{
+    "test_case_1": {
+        "url": "webhp?hl=en&amp;ictx=2&amp;sa=X&amp;ved=0ahUKEwil_"
+    },
+    "test_case_2": {
+        "url": "cookie-banner/cookie-library.bundle.js"
+    },
+    "test_case_3": {
+        "url": "bower/modernizr/modernizr.js"
+    },
+    "test_case_4": {
+        "url": "oSxzJj8AhVtEFkFHTHnCGQQPQgI"
+    },
+    "test_case_5": {
+        "url": "?p=ws_results_help&amp;hl=en-CA&amp;fg=1"
+    },
+    "test_case_6": {
+        "url": "how-twitter-ads-work.html?ref=web-twc-ao-gbl-adsinfo&utm_source=twc&utm_"
+    },
+    "test_case_7": {
+        "url": "medium=web&utm_campaign=ao&utm_content=adsinfo"
+    },
+    "test_case_8": {
+        "url": "41Gc3C8UysL.css?AUIClients/AmazonGatewayAuiAssets"
+    },
+    "test_case_9": {
+        "url": "postgresql://other:9818274x1!!@localhost:5432/"
+    },
+    "test_case_10": {
+        "url": "otherdb?connect_timeout=10&application_name=myapp"
+    },
+    "test_case_11": {
+        "url": "polyfills.js"
+    },
+    "test_case_12": {
+        "url": "css/orbit-v5-ltr.min.css"
+    },
+    "test_case_13": {
+        "url": "require.min.js"
+    },
+    "test_case_14": {
+        "url": "css/box.css"
+    },
+    "test_case_15": {
+        "url": "20220908-1153-091014d07889c842a7bdc06e00fa711c9e04f049/responsive/css/"
+    },
+    "test_case_16": {
+        "url": "old-ie.min.css"
+    },
+    "test_case_17": {
+        "url": "20220908-1153-091014d07889c842a7bdc06e00fa711c9e04f049/modules/vendor/"
+    }
+}
