@@ -23,5 +23,129 @@
       "query_params": {},
       "fragment": ""
     }
+  },
+  "test_case_3": {
+    "url": "https://www.reddit.com/?after=t3_zvz1ze",
+    "parsed_url": {
+      "protocol": "https",
+      "hostname": "www.reddit.com",
+      "port": null,
+      "path": "/",
+      "query_params": {
+        "after": "t3_zvz1ze"
+      },
+      "fragment": ""
+    }
+  },
+  "test_case_4": {
+    "url": "https://www.reddit.com/r/programming/comments/7xkz7f/what_are_some_of_the_best_programming_jokes_you/?sort=top",
+    "parsed_url": {
+      "protocol": "https",
+      "hostname": "www.reddit.com",
+      "port": null,
+      "path": "/r/programming/comments/7xkz7f/what_are_some_of_the_best_programming_jokes_you/",
+      "query_params": {
+        "sort": "top"
+      },
+      "fragment": ""
+    }
+  },
+  "test_case_5": {
+    "url": "https://www.reddit.com/login/?dest=https%3A%2F%2Fwww.reddit.com%2F",
+    "parsed_url": {
+      "protocol": "https",
+      "hostname": "www.reddit.com",
+      "port": null,
+      "path": "/login/",
+      "query_params": {
+        "dest": "https://www.reddit.com/"
+      },
+      "fragment": ""
+    }
+  },
+  "test_case_6": {
+    "url": "http://[2606:4700:4700::1111]",
+    "parsed_url": {
+      "protocol": "http",
+      "hostname": "[2606:4700:4700::1111]",
+      "port": null,
+      "path": "",
+      "query_params": {},
+      "fragment": ""
+    }
+  },
+  "test_case_7": {
+    "url": "https://static.files.bbci.co.uk/orbit/737a4ee2bed596eb65afc4d2ce9af568/",
+    "parsed_url": {
+      "protocol": "https",
+      "hostname": "static.files.bbci.co.uk",
+      "port": null,
+      "path": "/orbit/737a4ee2bed596eb65afc4d2ce9af568/",
+      "query_params": {},
+      "fragment": ""
+    }
+  },
+  "test_case_8": {
+    "url": "https://images-na.ssl-images-amazon.com/images/I/",
+    "parsed_url": {
+      "protocol": "https",
+      "hostname": "images-na.ssl-images-amazon.com",
+      "port": null,
+      "path": "/images/I/",
+      "query_params": {},
+      "fragment": ""
+    }
+  },
+  "test_case_9": {
+    "url": "https://www.google.com/search?q=javascript+url+parser&oq=javascript+url+parser&aqs=chrome..69i57j0l7.2927j0j7&sourceid=chrome&ie=UTF-8",
+    "parsed_url": {
+      "protocol": "https",
+      "hostname": "www.google.com",
+      "port": null,
+      "path": "/search",
+      "query_params": {
+        "q": "javascript url parser",
+        "oq": "javascript url parser",
+        "aqs": "chrome..69i57j0l7.2927j0j7",
+        "sourceid": "chrome",
+        "ie": "UTF-8"
+      },
+      "fragment": ""
+    }
+  },
+  "test_case_10": {
+    "url": "http://192.168.1.1",
+    "parsed_url": {
+      "protocol": "http",
+      "hostname": "192.168.1.1",
+      "port": null,
+      "path": "",
+      "query_params": {},
+      "fragment": ""
+    }
+  },
+  "test_case_11": {
+    "url": "youtube.com/watch?v=9bZkp7q19f0",
+    "parsed_url": {
+      "protocol": "",
+      "hostname": "youtube.com",
+      "port": null,
+      "path": "/watch",
+      "query_params": {
+        "v": "9bZkp7q19f0"
+      },
+      "fragment": ""
+    }
+  },
+  "test_case_12": {
+    "url": "https://www.tiktok.com/@aguyandagolden/video/7133277734310038830",
+    "parsed_url": {
+      "protocol": "https",
+      "hostname": "www.tiktok.com",
+      "port": null,
+      "path": "/@aguyandagolden/video/7133277734310038830",
+      "query_params": {},
+      "fragment": ""
+    }
   }
 }
