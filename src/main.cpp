@@ -14,6 +14,9 @@ int main()
 	//测试基础合法url
 	test_basic_legal_url();
 
+	//测试基础非法url
+	test_basic_illegal_url();
+
 	//测试随机合法url
 	test_random_legal_url();
 	

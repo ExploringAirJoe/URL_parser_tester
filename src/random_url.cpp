@@ -45,10 +45,10 @@ void test_random_legal_url()
         random_path = generate_random_path(PATH_LEGAL);
 
         // Generate random query params
-        //random_query_params = (rand() % 2 == 0) ? "?param1=value1&param2=value2" : "";
+        random_query_params = generate_random_query_params(QUERY_PARAMS_LEGAL);
 
         // Generate random fragment
-        random_fragment = (rand() % 2 == 0) ? "section" : "";
+        random_fragment = generate_random_fragment(FRAGMENT_LEGAL);
 
         //对refer_parsed_url进行赋值
         refer_parsed_url.protocol = random_protocol;
@@ -205,6 +205,26 @@ std::map<std::string, std::string> generate_random_query_params(int kind)
 {
     std::map<std::string, std::string> query_params;
 
+    std::string param;
+    std::string value;
+
+    switch (kind)
+    {
+    case QUERY_PARAMS_LEGAL:
+        int count;
+        count = rand() % 6;
+        
+        for (int i = 0; i < count; i++)
+        {
+            param = generate_random_string(rand() % 8 + 2);
+            value = generate_random_string(rand() % 8 + 2);
+            query_params[param] = value;
+        }
+        break;
+    default:
+        break;
+    };
+
     return query_params;
 }
 
@@ -212,6 +232,15 @@ std::map<std::string, std::string> generate_random_query_params(int kind)
 std::string generate_random_fragment(int kind)
 {
     std::string fragment;
+
+    switch (kind)
+    {
+    case FRAGMENT_LEGAL:
+        fragment = generate_random_string(rand() % 5);
+        break;
+    default:
+        break;
+    };
 
     return fragment;
 }
