@@ -32,12 +32,12 @@ void test_basic_legal_url()
         //结果正确
         if (parse_correct)
         {
-            std::cout << "basic legal url " << url << " is parsed successfully!" << std::endl;
+            std::cout << "basic legal url " << url << " is parsed successfully!" << std::endl << std::endl;
         }
         //结果错误
         else
         {
-            std::cout << "basic legal url " << url << " is parsed wrongly!" << std::endl;
+            std::cout << "basic legal url " << url << " is parsed wrongly!" << std::endl << std::endl;
         }
     }
 }
@@ -68,12 +68,12 @@ void test_basic_illegal_url()
         //结果正确
         if (parse_correct)
         {
-            std::cout << "basic illegal url " << url << " is parsed successfully!" << std::endl;
+            std::cout << "basic illegal url " << url << " is parsed successfully!" << std::endl << std::endl;
         }
         //结果错误
         else
         {
-            std::cout << "basic illegal url " << url << " is parsed wrongly!" << std::endl;
+            std::cout << "basic illegal url " << url << " is parsed wrongly!" << std::endl << std::endl;
         }
     }
 }
