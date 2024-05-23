@@ -32,36 +32,56 @@ bool compare_parsed_url(const ParsedURL& refer_parsed_url, const ParsedURL& pars
     if (refer_parsed_url.protocol != parsed_url.protocol)
     {
         correct = false;
+        std::cout << "[ protocol ] should be {" << refer_parsed_url.protocol 
+                << "},but your is {" << parsed_url.protocol << "}" << std::endl;
     }
 
     //主机
     if (refer_parsed_url.hostname != parsed_url.hostname)
     {
         correct = false;
+        std::cout << "[ hostname ] should be {" << refer_parsed_url.hostname
+            << "},but your is {" << parsed_url.hostname << "}" << std::endl;
     }
 
     //端口
     if ((refer_parsed_url.port != parsed_url.port))
     {
         correct = false;
+        std::cout << "[ port ] should be {" << refer_parsed_url.port
+            << "},but your is {" << parsed_url.port << "}" << std::endl;
     }
 
     //路径
     if (refer_parsed_url.path != parsed_url.path)
     {
         correct = false;
+        std::cout << "[ path ] should be {" << refer_parsed_url.path
+            << "},but your is {" << parsed_url.path << "}" << std::endl;
     }
 
     //参数
     if (refer_parsed_url.query_params != parsed_url.query_params)
     {
         correct = false;
+        std::cout << "[ query_params ] should be:" << std::endl;
+        for (auto it = refer_parsed_url.query_params.begin(); it != refer_parsed_url.query_params.end(); ++it)
+        {
+            std::cout << "    " << "key: " << it->first << "    value: " << it->second << std::endl;
+        }
+        std::cout << "but your is:" << std::endl;
+        for (auto it = parsed_url.query_params.begin(); it != parsed_url.query_params.end(); ++it)
+        {
+            std::cout << "    " << "key: " << it->first << "    value: " << it->second << std::endl;
+        }
     }
 
     //片段
     if (refer_parsed_url.fragment != parsed_url.fragment)
     {
         correct = false;
+        std::cout << "[ fragment ] should be {" << refer_parsed_url.fragment
+            << "},but your is {" << parsed_url.fragment << "}" << std::endl;
     }
 
     return correct;
