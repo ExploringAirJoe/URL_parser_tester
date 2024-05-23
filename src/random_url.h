@@ -5,33 +5,35 @@
 #include "tested_parser.h"
 
 //分别标定了各个部分随机生成的类型
-#define PROTOCOL_LEGAL 1
+#define PROTOCOL_LEGAL 0
 
-#define HOSTNAME_LEGAL 1
+#define HOSTNAME_LEGAL 0
 
-#define PORT_LEGAL 1
+#define PORT_LEGAL 0
 
-#define PATH_LEGAL 1
+#define PATH_LEGAL 0
 
-#define QUERY_PARAMS_LEGAL 1
+#define QUERY_PARAMS_LEGAL 0
 
-#define FRAGMENT_LEGAL 1
+#define FRAGMENT_LEGAL 0
 
-#define PROTOCOL_ILLEGAL -1
+#define PROTOCOL_ILLEGAL 1
 
-#define HOSTNAME_ILLEGAL -1
+#define HOSTNAME_ILLEGAL 1
 
-#define PORT_ILLEGAL -1
+#define PORT_ILLEGAL 1
 
-#define PATH_ILLEGAL -1
+#define PATH_ILLEGAL 1
 
-#define QUERY_PARAMS_ILLEGAL -1
+#define QUERY_PARAMS_ILLEGAL 1
 
-#define FRAGMENT_ILLEGAL -1
+#define FRAGMENT_ILLEGAL 1
 
 void test_random_legal_url();//测试随机合法url
 
 void test_random_illegal_url();//测试随机非法url
+
+std::string generate_random_illegal_url();//随机生成一个指定类型非法url
 
 std::string generate_random_string(int length);//随机生成长度为length的字符串，以大小写字母和数字为字符集
 

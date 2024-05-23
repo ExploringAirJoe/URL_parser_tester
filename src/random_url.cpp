@@ -51,6 +51,7 @@ void test_random_legal_url()
         random_fragment = generate_random_fragment(FRAGMENT_LEGAL);
 
         //对refer_parsed_url进行赋值
+        refer_parsed_url.is_legal = true;
         refer_parsed_url.protocol = random_protocol;
         refer_parsed_url.hostname = random_hostname;
         refer_parsed_url.port = random_port;
@@ -76,6 +77,17 @@ void test_random_legal_url()
     }
 }
 
+//随机生成长度为length的字符串，以大小写字母和数字为字符集
+std::string generate_random_string(int length)
+{
+    const std::string charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    std::string result;
+    for (int i = 0; i < length; ++i) {
+        result.push_back(charset[rand() % charset.length()]);
+    }
+    return result;
+}
+
 //测试随机非法url
 void test_random_illegal_url()
 {
@@ -89,7 +101,7 @@ void test_random_illegal_url()
         url = generate_random_illegal_url();
 
         parsed_url = parser_test(url);
-        bool parse_correct = compare_parsed_url(refer_parsed_url, parsed_url);//比较结果
+        bool parse_correct = !parsed_url.is_legal;//比较结果
         //结果正确
         if (parse_correct)
         {
@@ -107,27 +119,41 @@ void test_random_illegal_url()
 std::string generate_random_illegal_url()
 {
     std::string url;
+    int total_error = 0;
+    bool is_wrong = false;
 
     // Generate random illegal protocol
-    std::string random_protocol = generate_random_protocol(PROTOCOL_ILLEGAL);
+    is_wrong = rand() % 2;
+    total_error += is_wrong;
+    std::string random_protocol = generate_random_protocol(is_wrong);
 
     // Generate random illegal hostname
-    std::string random_hostname = generate_random_hostname(HOSTNAME_ILLEGAL);
+    is_wrong = rand() % 2;
+    total_error += is_wrong;
+    std::string random_hostname = generate_random_hostname(is_wrong);
 
     // Generate random illegal port
-    int random_port = generate_random_port(PORT_ILLEGAL);
+    is_wrong = rand() % 2;
+    total_error += is_wrong;
+    int random_port = generate_random_port(is_wrong);
 
     // Generate random illegal path
-    std::string random_path = generate_random_path(PATH_ILLEGAL);
+    is_wrong = rand() % 2;
+    total_error += is_wrong;
+    std::string random_path = generate_random_path(is_wrong);
 
     // Generate random illegal query params
-    std::map<std::string, std::string> random_query_params = generate_random_query_params(QUERY_PARAMS_ILLEGAL);
+    is_wrong = rand() % 2;
+    total_error += is_wrong;
+    std::map<std::string, std::string> random_query_params = generate_random_query_params(is_wrong);
 
     // Generate random illegal fragment
-    std::string random_fragment = generate_random_fragment(FRAGMENT_ILLEGAL);
+    if (!total_error) is_wrong = true;
+    else is_wrong = rand() % 2;
+    std::string random_fragment = generate_random_fragment(is_wrong);
 
     // Construct the illegal url
-    url = random_protocol + "://" + random_hostname + ":" + std::to_string(random_port) + random_path;
+    url = random_protocol + (rand() % 7 ? "://" : ":/") + random_hostname + ":" + std::to_string(random_port) + random_path;
 
     if (!random_query_params.empty())
     {
@@ -158,7 +184,7 @@ std::string generate_random_protocol(int kind)
         protocol = generate_random_string(rand() % 10 + 3);
         break;
     case PROTOCOL_ILLEGAL:
-        protocol = generate_random_string(rand() % 10 + 3);
+        protocol = "";
         break;
     default:
         break;
@@ -208,6 +234,25 @@ std::string generate_random_hostname(int kind)
             break;
         }
         break;
+    case HOSTNAME_ILLEGAL:
+        int illegal_kind;
+        illegal_kind = rand() % 3;//0采取空串，1采取非法字符(空格)，2采取非法长度
+        switch (illegal_kind)
+        {
+        case 0:
+            hostname = "";
+            break;
+        case 1:
+            hostname = generate_random_string(rand() % 10 + 3);
+            hostname.insert(rand() % hostname.length(), " ");
+            break;
+        case 2:
+            hostname = generate_random_string(rand() % 255 + 256);
+            break;
+        default:
+            break;
+        }
+        break;
     default:
         break;
     };
@@ -228,6 +273,22 @@ int generate_random_port(int kind)
         if (legal_kind > 0) port = rand() % 65535 + 1;
         else port = -1;
         break;
+    case PORT_ILLEGAL:
+        int illegal_kind;
+        illegal_kind = rand() % 2;//0采取0，1采取非法端口
+        switch (illegal_kind)
+        {
+        case 0:
+            port = 0;
+            break;
+        case 1:
+            port = rand() % 65536 + 65536;
+            break;
+        default:
+            break;
+        }
+        break;
+    
     default:
         break;
     };
@@ -239,17 +300,24 @@ int generate_random_port(int kind)
 std::string generate_random_path(int kind)
 {
     std::string path;
+    int length;
 
     switch (kind)
     {
     case PATH_LEGAL:
-        int length;
         length = rand() % 5;
         for (int i = 0; i < length; i++)
         {
             path += "/" + generate_random_string(rand() % 10 + 3);
         }
         break;
+    case PATH_ILLEGAL:
+        length = rand() % 5;
+        for (int i = 0; i < length; i++)
+        {
+            path += "/" + generate_random_string(rand() % 10 + 3);
+        }
+        path.insert(rand() % path.length(), " ");
     default:
         break;
     };
@@ -264,11 +332,11 @@ std::map<std::string, std::string> generate_random_query_params(int kind)
 
     std::string param;
     std::string value;
+    int count;
 
     switch (kind)
     {
     case QUERY_PARAMS_LEGAL:
-        int count;
         count = rand() % 6;
         
         for (int i = 0; i < count; i++)
@@ -278,6 +346,15 @@ std::map<std::string, std::string> generate_random_query_params(int kind)
             query_params[param] = value;
         }
         break;
+    case QUERY_PARAMS_ILLEGAL:
+        count = rand() % 6;
+        
+        for (int i = 0; i < count; i++)
+        {
+            param = generate_random_string(rand() % 8 + 2);
+            value = "";
+            query_params[param] = value;
+        }
     default:
         break;
     };
@@ -294,6 +371,10 @@ std::string generate_random_fragment(int kind)
     {
     case FRAGMENT_LEGAL:
         fragment = generate_random_string(rand() % 5);
+        break;
+    case FRAGMENT_ILLEGAL:
+        fragment = generate_random_string(rand() % 5);
+        fragment.insert(rand() % fragment.length(), " ");
         break;
     default:
         break;

@@ -19,6 +19,9 @@ int main()
 
 	//测试随机合法url
 	test_random_legal_url();
+
+	//测试随机非法url
+	test_random_illegal_url();
 	
 	return 0;
 }
