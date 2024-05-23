@@ -1,9 +1,9 @@
 #ifndef PARSED_URL_H
 #define PARSED_URL_H
 
-#include<iostream>
-#include<fstream>
-#include<nlohmann/json.hpp>
+#include <iostream>
+#include <fstream>
+#include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 

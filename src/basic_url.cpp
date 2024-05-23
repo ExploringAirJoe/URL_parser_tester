@@ -1,6 +1,6 @@
-#include<iostream>
-#include<fstream>
-#include<nlohmann/json.hpp>
+#include <iostream>
+#include <fstream>
+#include <nlohmann/json.hpp>
 
 #include "basic_url.h"
 
@@ -10,7 +10,7 @@ using json = nlohmann::json;
 void test_basic_legal_url()
 {
     //文件流读取基础合法url的JSON文件数据
-	std::ifstream file("../../../basic_url/basic_legal_url.json");
+	std::ifstream file("../basic_url/basic_legal_url.json");
     if (!file.is_open()) {
         std::cerr << "无法打开文件" << std::endl;
         return;
@@ -46,7 +46,7 @@ void test_basic_legal_url()
 void test_basic_illegal_url()
 {
     //文件流读取基础合法url的JSON文件数据
-    std::ifstream file("../../../basic_url/basic_illegal_url.json");
+    std::ifstream file("../basic_url/basic_illegal_url.json");
     json basic_legal_url;
     file >> basic_legal_url;
 

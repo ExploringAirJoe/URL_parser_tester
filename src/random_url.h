@@ -17,6 +17,18 @@
 
 #define FRAGMENT_LEGAL 1
 
+#define PROTOCOL_ILLEGAL -1
+
+#define HOSTNAME_ILLEGAL -1
+
+#define PORT_ILLEGAL -1
+
+#define PATH_ILLEGAL -1
+
+#define QUERY_PARAMS_ILLEGAL -1
+
+#define FRAGMENT_ILLEGAL -1
+
 void test_random_legal_url();//测试随机合法url
 
 void test_random_illegal_url();//测试随机非法url

@@ -1,5 +1,5 @@
-#include<iostream>
-#include<fstream>
+#include <iostream>
+#include <fstream>
 
 #include "random_url.h"
 
@@ -79,18 +79,72 @@ void test_random_legal_url()
 //测试随机非法url
 void test_random_illegal_url()
 {
+    ParsedURL parsed_url;
+    std::string url;
 
+    //多次随机生成
+    for (int case_num = 0; case_num <= 10; case_num++)
+    {
+        // Generate random illegal url
+        url = generate_random_illegal_url();
+
+        parsed_url = parser_test(url);
+        bool parse_correct = compare_parsed_url(refer_parsed_url, parsed_url);//比较结果
+        //结果正确
+        if (parse_correct)
+        {
+            std::cout << "random illegal url " << url << " is parsed successfully!" << std::endl;
+        }
+        //结果错误
+        else
+        {
+            std::cout << "random illegal url " << url << " is parsed wrongly!" << std::endl;
+        }
+    }
 }
 
-//随机生成长度为length的字符串，以大小写字母和数字为字符集
-std::string generate_random_string(int length)
+//随机生成一个指定类型非法url
+std::string generate_random_illegal_url()
 {
-    const std::string charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    std::string result;
-    for (int i = 0; i < length; ++i) {
-        result.push_back(charset[rand() % charset.length()]);
+    std::string url;
+
+    // Generate random illegal protocol
+    std::string random_protocol = generate_random_protocol(PROTOCOL_ILLEGAL);
+
+    // Generate random illegal hostname
+    std::string random_hostname = generate_random_hostname(HOSTNAME_ILLEGAL);
+
+    // Generate random illegal port
+    int random_port = generate_random_port(PORT_ILLEGAL);
+
+    // Generate random illegal path
+    std::string random_path = generate_random_path(PATH_ILLEGAL);
+
+    // Generate random illegal query params
+    std::map<std::string, std::string> random_query_params = generate_random_query_params(QUERY_PARAMS_ILLEGAL);
+
+    // Generate random illegal fragment
+    std::string random_fragment = generate_random_fragment(FRAGMENT_ILLEGAL);
+
+    // Construct the illegal url
+    url = random_protocol + "://" + random_hostname + ":" + std::to_string(random_port) + random_path;
+
+    if (!random_query_params.empty())
+    {
+        url += "?";
+        for (const auto& param : random_query_params)
+        {
+            url += param.first + "=" + param.second + "&";
+        }
+        url.pop_back(); // Remove the last '&'
     }
-    return result;
+
+    if (!random_fragment.empty())
+    {
+        url += "#" + random_fragment;
+    }
+
+    return url;
 }
 
 //随机生成一个指定类型协议
@@ -101,6 +155,9 @@ std::string generate_random_protocol(int kind)
     switch (kind)
     {
     case PROTOCOL_LEGAL:
+        protocol = generate_random_string(rand() % 10 + 3);
+        break;
+    case PROTOCOL_ILLEGAL:
         protocol = generate_random_string(rand() % 10 + 3);
         break;
     default:
@@ -168,7 +225,7 @@ int generate_random_port(int kind)
     case PORT_LEGAL:
         int legal_kind;
         legal_kind = rand() % 5;
-        if (legal_kind > 0)port = rand() % 65535 + 1;
+        if (legal_kind > 0) port = rand() % 65535 + 1;
         else port = -1;
         break;
     default:

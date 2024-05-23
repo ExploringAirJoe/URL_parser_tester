@@ -1,3 +1,4 @@
 /out
 /.vs
-/.gitignore
+/build
+/.vscode
