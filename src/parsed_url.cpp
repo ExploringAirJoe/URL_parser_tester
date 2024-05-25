@@ -55,9 +55,12 @@ bool compare_parsed_url(const ParsedURL& refer_parsed_url, const ParsedURL& pars
     //路径
     if (refer_parsed_url.path != parsed_url.path)
     {
-        correct = false;
-        std::cout << "[ path ] should be {" << refer_parsed_url.path
-            << "},but your is {" << parsed_url.path << "}" << std::endl;
+        if ((refer_parsed_url.path != "") || (parsed_url.path != "/"))
+        {
+            correct = false;
+            std::cout << "[ path ] should be {" << refer_parsed_url.path
+                    << "},but your is {" << parsed_url.path << "}" << std::endl;
+        }
     }
 
     //参数
@@ -137,14 +140,7 @@ std::string ParsedURL_to_url(ParsedURL& parsed_url)
     }
 
     // Add path (encoded)
-    if (parsed_url.path == "")
-    {
-        url += "/";
-    }
-    else
-    {
-        url += parsed_url.path;
-    }
+    url += parsed_url.path;
 
     // Add query parameters if any
     if (!parsed_url.query_params.empty()) {

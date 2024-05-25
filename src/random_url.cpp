@@ -77,20 +77,10 @@ void test_random_legal_url()
     }
 }
 
-//随机生成长度为length的字符串，以大小写字母和数字为字符集
-std::string generate_random_string(int length)
-{
-    const std::string charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    std::string result;
-    for (int i = 0; i < length; ++i) {
-        result.push_back(charset[rand() % charset.length()]);
-    }
-    return result;
-}
-
 //测试随机非法url
 void test_random_illegal_url()
 {
+    ParsedURL refer_parsed_url;
     ParsedURL parsed_url;
     std::string url;
 
@@ -101,16 +91,16 @@ void test_random_illegal_url()
         url = generate_random_illegal_url();
 
         parsed_url = parser_test(url);
-        bool parse_correct = !parsed_url.is_legal;//比较结果
+        bool parse_correct = compare_parsed_url(refer_parsed_url,parsed_url);//比较结果
         //结果正确
         if (parse_correct)
         {
-            std::cout << "random illegal url " << url << " is parsed successfully!" << std::endl;
+            std::cout << "random illegal url " << url << " is parsed successfully!" << std::endl << std::endl;
         }
         //结果错误
         else
         {
-            std::cout << "random illegal url " << url << " is parsed wrongly!" << std::endl;
+            std::cout << "random illegal url " << url << " is parsed wrongly!" << std::endl << std::endl;
         }
     }
 }
@@ -155,14 +145,14 @@ std::string generate_random_illegal_url()
     // Construct the illegal url
     url = random_protocol + (rand() % 7 ? "://" : ":/") + random_hostname + ":" + std::to_string(random_port) + random_path;
 
-    if (!random_query_params.empty())
-    {
+    if (!random_query_params.empty()) {
         url += "?";
-        for (const auto& param : random_query_params)
-        {
-            url += param.first + "=" + param.second + "&";
+        for (auto it = random_query_params.begin(); it != random_query_params.end(); ++it) {
+            url += url_encode(it->first) + "=" + url_encode(it->second);
+            if (std::next(it) != random_query_params.end()) {
+                url += "&";
+            }
         }
-        url.pop_back(); // Remove the last '&'
     }
 
     if (!random_fragment.empty())
@@ -172,6 +162,18 @@ std::string generate_random_illegal_url()
 
     return url;
 }
+
+//随机生成长度为length的字符串，以大小写字母和数字为字符集
+std::string generate_random_string(int length)
+{
+    const std::string charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    std::string result;
+    for (int i = 0; i < length; ++i) {
+        result.push_back(charset[rand() % charset.length()]);
+    }
+    return result;
+}
+
 
 //随机生成一个指定类型协议
 std::string generate_random_protocol(int kind)
@@ -288,7 +290,6 @@ int generate_random_port(int kind)
             break;
         }
         break;
-    
     default:
         break;
     };
@@ -312,12 +313,13 @@ std::string generate_random_path(int kind)
         }
         break;
     case PATH_ILLEGAL:
-        length = rand() % 5;
+        length = rand() % 5 + 1;
         for (int i = 0; i < length; i++)
         {
             path += "/" + generate_random_string(rand() % 10 + 3);
         }
         path.insert(rand() % path.length(), " ");
+        break;
     default:
         break;
     };
@@ -355,6 +357,7 @@ std::map<std::string, std::string> generate_random_query_params(int kind)
             value = "";
             query_params[param] = value;
         }
+        break;
     default:
         break;
     };
@@ -373,7 +376,7 @@ std::string generate_random_fragment(int kind)
         fragment = generate_random_string(rand() % 5);
         break;
     case FRAGMENT_ILLEGAL:
-        fragment = generate_random_string(rand() % 5);
+        fragment = generate_random_string(rand() % 5 + 1);
         fragment.insert(rand() % fragment.length(), " ");
         break;
     default:
