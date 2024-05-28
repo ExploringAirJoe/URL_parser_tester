@@ -9,10 +9,9 @@ using json = nlohmann::json;
 
 struct ParsedURL
 {
-    bool is_legal = true;
     std::string protocol;
     std::string hostname;
-    int port = 0;
+    int port = -1;
     std::string path;
     std::map<std::string, std::string> query_params;
     std::string fragment;

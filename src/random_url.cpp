@@ -25,12 +25,12 @@ void test_random_legal_url()
     //随机生成的各部分
     std::string random_protocol;
     std::string random_hostname;
-    int random_port = 0;
+    int random_port = -1;
     std::string random_path;
     std::map<std::string, std::string>random_query_params;
     std::string random_fragment;
 
-    //多次随机生成
+    //普通合法url
     for (int case_num = 0; case_num <= 10; case_num++)
     {
         random_protocol = generate_random_protocol(PROTOCOL_LEGAL);
@@ -51,7 +51,6 @@ void test_random_legal_url()
         random_fragment = generate_random_fragment(FRAGMENT_LEGAL);
 
         //对refer_parsed_url进行赋值
-        refer_parsed_url.is_legal = true;
         refer_parsed_url.protocol = random_protocol;
         refer_parsed_url.hostname = random_hostname;
         refer_parsed_url.port = random_port;
@@ -67,12 +66,61 @@ void test_random_legal_url()
         //结果正确
         if (parse_correct)
         {
-            std::cout << "random legal url " << url << " is parsed successfully!" << std::endl << std::endl;
+            std::cout << "random legal url " << url << " is parsed "
+                << "\033[32m" << "successfully!" << "\033[0m" << std::endl << std::endl << std::endl;
         }
         //结果错误
         else
         {
-            std::cout << "random legal url " << url << " is parsed wrongly!" << std::endl << std::endl;
+            std::cout << "random legal url " << url << " is parsed"
+                << "\033[31m" << " wrongly!" << "\033[0m" << std::endl << std::endl << std::endl;
+        }
+    }
+
+    //强化合法url
+    for (int case_num = 0; case_num <= 10; case_num++)
+    {
+        random_protocol = generate_random_protocol(PROTOCOL_STRONG_LEGAL);
+
+        // Generate random hostname
+        random_hostname = generate_random_hostname(HOSTNAME_STRONG_LEGAL);
+
+        // Generate random port
+        random_port = generate_random_port(PORT_STRONG_LEGAL);
+
+        // Generate random path
+        random_path = generate_random_path(PATH_STRONG_LEGAL);
+
+        // Generate random query params
+        random_query_params = generate_random_query_params(QUERY_PARAMS_STRONG_LEGAL);
+
+        // Generate random fragment
+        random_fragment = generate_random_fragment(FRAGMENT_STRONG_LEGAL);
+
+        //对refer_parsed_url进行赋值
+        refer_parsed_url.protocol = random_protocol;
+        refer_parsed_url.hostname = random_hostname;
+        refer_parsed_url.port = random_port;
+        refer_parsed_url.path = random_path;
+        refer_parsed_url.query_params = random_query_params;
+        refer_parsed_url.fragment = random_fragment;
+
+        //将refer_parsed_url转化为url
+        url = ParsedURL_to_url(refer_parsed_url);
+
+        parsed_url = parser_test(url);
+        bool parse_correct = compare_parsed_url(refer_parsed_url, parsed_url);//比较结果
+        //结果正确
+        if (parse_correct)
+        {
+            std::cout << "random legal url " << url << " is parsed "
+                << "\033[32m" << "successfully!" << "\033[0m" << std::endl << std::endl << std::endl;
+        }
+        //结果错误
+        else
+        {
+            std::cout << "random legal url " << url << " is parsed"
+                << "\033[31m" << " wrongly!" << "\033[0m" << std::endl << std::endl << std::endl;
         }
     }
 }
@@ -95,12 +143,14 @@ void test_random_illegal_url()
         //结果正确
         if (parse_correct)
         {
-            std::cout << "random illegal url " << url << " is parsed successfully!" << std::endl << std::endl;
+            std::cout << "random illegal url " << url << " is parsed "
+                << "\033[32m" << "successfully!" << "\033[0m" << std::endl << std::endl << std::endl;
         }
         //结果错误
         else
         {
-            std::cout << "random illegal url " << url << " is parsed wrongly!" << std::endl << std::endl;
+            std::cout << "random illegal url " << url << " is parsed"
+                << "\033[31m" << " wrongly!" << "\033[0m" << std::endl << std::endl << std::endl;
         }
     }
 }
@@ -138,12 +188,21 @@ std::string generate_random_illegal_url()
     std::map<std::string, std::string> random_query_params = generate_random_query_params(is_wrong);
 
     // Generate random illegal fragment
-    if (!total_error) is_wrong = true;
-    else is_wrong = rand() % 2;
+    is_wrong = rand() % 2;
+    total_error += is_wrong;
     std::string random_fragment = generate_random_fragment(is_wrong);
 
     // Construct the illegal url
-    url = random_protocol + (rand() % 7 ? "://" : ":/") + random_hostname + ":" + std::to_string(random_port) + random_path;
+    url = random_protocol;
+    if (total_error)
+    {
+        url+=(rand() % 7 ? "://" : ":/");
+    }
+    else
+    {
+        url += (rand() % 2 ? "" : ":////");
+    }
+    url += random_hostname + ":" + std::to_string(random_port) + random_path;
 
     if (!random_query_params.empty()) {
         url += "?";
@@ -174,20 +233,43 @@ std::string generate_random_string(int length)
     return result;
 }
 
+//随机生成长度为length的字符串，包括字母数字和保留字符
+std::string generate_random_strong_string(int length)
+{
+    const std::string charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const std::string special_charset = "%/.#?;:$+@&={}|\\^~[]'<>";
+    std::string result;
+    for (int i = 0; i < length; ++i) {
+        if (rand() % 2)
+        {
+            result.push_back(charset[rand() % charset.length()]);
+        }
+        else
+        {
+            result.push_back(special_charset[rand() % special_charset.length()]);
+        }
+    }
+    return result;
+}
+
 
 //随机生成一个指定类型协议
 std::string generate_random_protocol(int kind)
 {
     std::string protocol;
+    const std::string legal_protocol[] = { "file","http","https","FTP","gopher","mailto","MMS",
+        "ed2k","Flashget","thunder","tel","sms"};
 
     switch (kind)
     {
     case PROTOCOL_LEGAL:
-        protocol = generate_random_string(rand() % 10 + 3);
+        protocol = legal_protocol[rand() % legal_protocol->length()];
         break;
     case PROTOCOL_ILLEGAL:
         protocol = "";
         break;
+    case PROTOCOL_STRONG_LEGAL:
+        protocol = generate_random_string(rand() % 20 + 1);
     default:
         break;
     };
@@ -255,6 +337,40 @@ std::string generate_random_hostname(int kind)
             break;
         }
         break;
+    case HOSTNAME_STRONG_LEGAL:
+        int strong_legal_kind;
+        strong_legal_kind = rand() % 3;//0采取域名，1采取IPv4，2采取IPv6
+        switch (strong_legal_kind)
+        {
+        case 0:
+            int num;
+            num = rand() % 4 + 1;
+            for (int i = 0; i < num; i++)
+            {
+                if (i)hostname += ".";
+                hostname += generate_random_string(rand() % 10 + 3);
+            }
+            break;
+        case 1:
+            for (int i = 0; i < 4; i++)
+            {
+                if (i) hostname += ".";
+                hostname += std::to_string(rand() % 256);
+            }
+            break;
+        case 2:
+            hostname = "[";
+            for (int i = 0; i < 8; i++)
+            {
+                if (i) hostname += ".";
+                hostname += std::to_string(rand() % 256);
+            }
+            hostname += "]";
+            break;
+        default:
+            break;
+        }
+        break;
     default:
         break;
     };
@@ -272,7 +388,7 @@ int generate_random_port(int kind)
     case PORT_LEGAL:
         int legal_kind;
         legal_kind = rand() % 5;
-        if (legal_kind > 0) port = rand() % 65535 + 1;
+        if (legal_kind > 0) port = rand() % 2048 + 1;
         else port = -1;
         break;
     case PORT_ILLEGAL:
@@ -289,6 +405,12 @@ int generate_random_port(int kind)
         default:
             break;
         }
+        break;
+    case PORT_STRONG_LEGAL:
+        int strong_legal_kind;
+        strong_legal_kind = rand() % 5;
+        if (strong_legal_kind > 0) port = rand() % 65535 + 1;
+        else port = -1;
         break;
     default:
         break;
@@ -316,10 +438,20 @@ std::string generate_random_path(int kind)
         length = rand() % 5 + 1;
         for (int i = 0; i < length; i++)
         {
-            path += "/" + generate_random_string(rand() % 10 + 3);
+            path += "/" + generate_random_string(rand() % 10);
         }
         path.insert(rand() % path.length(), " ");
         break;
+    case PATH_STRONG_LEGAL:
+        length = rand() % 5;
+        for (int i = 0; i < length; i++)
+        {
+            path += "/" + generate_random_string(rand() % 10 + 1);
+        }
+        if ((length == 0) && (rand() % 2 == 0))
+        {
+            path = "/";
+        }
     default:
         break;
     };
@@ -358,6 +490,16 @@ std::map<std::string, std::string> generate_random_query_params(int kind)
             query_params[param] = value;
         }
         break;
+    case QUERY_PARAMS_STRONG_LEGAL:
+        count = rand() % 6;
+
+        for (int i = 0; i < count; i++)
+        {
+            param = generate_random_string(rand() % 10 + 1);
+            value = generate_random_strong_string(rand() % 10 + 0);
+            query_params[param] = value;
+        }
+        break;
     default:
         break;
     };
@@ -378,6 +520,9 @@ std::string generate_random_fragment(int kind)
     case FRAGMENT_ILLEGAL:
         fragment = generate_random_string(rand() % 5 + 1);
         fragment.insert(rand() % fragment.length(), " ");
+        break;
+    case FRAGMENT_STRONG_LEGAL:
+        fragment = generate_random_strong_string(rand() % 30);
         break;
     default:
         break;
