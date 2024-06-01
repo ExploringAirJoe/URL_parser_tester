@@ -10,8 +10,8 @@
 
 using json = nlohmann::json;
 
-void test_basic_legal_url();//测试基础合法url
+std::pair<int, int> test_basic_legal_url();//测试基础合法url
 
-void test_basic_illegal_url();//测试基础非法url
+std::pair<int, int> test_basic_illegal_url();//测试基础非法url
 
 #endif

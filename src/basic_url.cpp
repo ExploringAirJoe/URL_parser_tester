@@ -7,17 +7,19 @@
 using json = nlohmann::json;
 
 //测试基础合法url
-void test_basic_legal_url()
+std::pair<int, int> test_basic_legal_url()
 {
     //文件流读取基础合法url的JSON文件数据
 	std::ifstream file("../basic_url/basic_legal_url.json");
     if (!file.is_open()) {
         std::cerr << "无法打开文件" << std::endl;
-        return;
+        return {0, 0};
     }
 	json basic_legal_url;
 	file >> basic_legal_url;
     file.close();
+    int total_case = 0;
+    int passed_case = 0;
 
     for (json::iterator it = basic_legal_url.begin(); it != basic_legal_url.end(); ++it)
     {
@@ -34,6 +36,7 @@ void test_basic_legal_url()
         {
             std::cout << "basic legal url " << url << " is parsed "
                 << "\033[32m" << "successfully!" << "\033[0m" << std::endl << std::endl << std::endl;
+            passed_case += 1;
         }
         //结果错误
         else
@@ -41,14 +44,22 @@ void test_basic_legal_url()
             std::cout << "basic legal url " << url << " is parsed"
                 << "\033[31m" << " wrongly!" << "\033[0m" << std::endl << std::endl << std::endl;
         }
+        total_case += 1;
     }
+    return { passed_case, total_case };
 }
 
 //测试基础非法url
-void test_basic_illegal_url()
+std::pair<int, int> test_basic_illegal_url()
 {
+    int total_case = 0;
+    int passed_case = 0;
     //文件流读取基础合法url的JSON文件数据
     std::ifstream file("../basic_url/basic_illegal_url.json");
+    if (!file.is_open()) {
+        std::cerr << "无法打开文件" << std::endl;
+        return {0, 0};
+    }
     json basic_legal_url;
     file >> basic_legal_url;
 
@@ -72,6 +83,7 @@ void test_basic_illegal_url()
         {
             std::cout << "basic illegal url " << url << " is parsed "
                 << "\033[32m" << "successfully!" << "\033[0m" << std::endl << std::endl << std::endl;
+            passed_case += 1;
         }
         //结果错误
         else
@@ -79,5 +91,7 @@ void test_basic_illegal_url()
             std::cout << "basic illegal url " << url << " is parsed"
                 << "\033[31m" << " wrongly!" << "\033[0m" << std::endl << std::endl << std::endl;
         }
+        total_case += 1;
     }
+    return { passed_case, total_case };
 }

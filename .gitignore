@@ -2,3 +2,6 @@
 /.vs
 /build
 /.vscode
+/url-parsers
+/linux_build
+/CMakeSettings.json

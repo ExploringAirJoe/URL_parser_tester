@@ -16,7 +16,7 @@ struct ParsedURL
 */
 
 //测试随机合法url
-void test_random_legal_url()
+std::pair<int, int> test_random_legal_url()
 {
 	ParsedURL refer_parsed_url;
     ParsedURL parsed_url;
@@ -30,8 +30,11 @@ void test_random_legal_url()
     std::map<std::string, std::string>random_query_params;
     std::string random_fragment;
 
+    int total_cases = 0;
+    int passed_cases = 0;
+
     //普通合法url
-    for (int case_num = 0; case_num <= 10; case_num++)
+    for (int case_num = 0; case_num < RANDOM_TEST_TIMES; case_num++)
     {
         random_protocol = generate_random_protocol(PROTOCOL_LEGAL);
 
@@ -68,6 +71,7 @@ void test_random_legal_url()
         {
             std::cout << "random legal url " << url << " is parsed "
                 << "\033[32m" << "successfully!" << "\033[0m" << std::endl << std::endl << std::endl;
+            passed_cases += 1;
         }
         //结果错误
         else
@@ -75,10 +79,11 @@ void test_random_legal_url()
             std::cout << "random legal url " << url << " is parsed"
                 << "\033[31m" << " wrongly!" << "\033[0m" << std::endl << std::endl << std::endl;
         }
+        total_cases += 1;
     }
 
     //强化合法url
-    for (int case_num = 0; case_num <= 10; case_num++)
+    for (int case_num = 0; case_num < RANDOM_TEST_TIMES; case_num++)
     {
         random_protocol = generate_random_protocol(PROTOCOL_STRONG_LEGAL);
 
@@ -115,6 +120,7 @@ void test_random_legal_url()
         {
             std::cout << "random legal url " << url << " is parsed "
                 << "\033[32m" << "successfully!" << "\033[0m" << std::endl << std::endl << std::endl;
+            passed_cases += 1;
         }
         //结果错误
         else
@@ -122,18 +128,23 @@ void test_random_legal_url()
             std::cout << "random legal url " << url << " is parsed"
                 << "\033[31m" << " wrongly!" << "\033[0m" << std::endl << std::endl << std::endl;
         }
+        total_cases += 1;
     }
+    return { passed_cases, total_cases };
 }
 
 //测试随机非法url
-void test_random_illegal_url()
+std::pair<int, int> test_random_illegal_url()
 {
     ParsedURL refer_parsed_url;
     ParsedURL parsed_url;
     std::string url;
 
+    int total_cases = 0;
+    int passed_cases = 0;
+
     //多次随机生成
-    for (int case_num = 0; case_num <= 10; case_num++)
+    for (int case_num = 0; case_num < RANDOM_TEST_TIMES; case_num++)
     {
         // Generate random illegal url
         url = generate_random_illegal_url();
@@ -145,6 +156,7 @@ void test_random_illegal_url()
         {
             std::cout << "random illegal url " << url << " is parsed "
                 << "\033[32m" << "successfully!" << "\033[0m" << std::endl << std::endl << std::endl;
+            passed_cases += 1;
         }
         //结果错误
         else
@@ -152,7 +164,9 @@ void test_random_illegal_url()
             std::cout << "random illegal url " << url << " is parsed"
                 << "\033[31m" << " wrongly!" << "\033[0m" << std::endl << std::endl << std::endl;
         }
+        total_cases += 1;
     }
+    return { passed_cases, total_cases };
 }
 
 //随机生成一个指定类型非法url
@@ -202,7 +216,7 @@ std::string generate_random_illegal_url()
     {
         url += (rand() % 2 ? "" : ":////");
     }
-    url += random_hostname + ":" + std::to_string(random_port) + random_path;
+    url += random_hostname + ((random_port == -1) ? "" : (":" + std::to_string(random_port))) + random_path;
 
     if (!random_query_params.empty()) {
         url += "?";
@@ -393,7 +407,7 @@ int generate_random_port(int kind)
         break;
     case PORT_ILLEGAL:
         int illegal_kind;
-        illegal_kind = rand() % 2;//0采取0，1采取非法端口
+        illegal_kind = rand() % 2;//0采取0，1采取超过65535的端口
         switch (illegal_kind)
         {
         case 0:

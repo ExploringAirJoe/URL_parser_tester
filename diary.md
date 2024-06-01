@@ -1,4 +1,6 @@
- - 有关parser输出的问题
+# Diary
+
+- 有关parser输出的问题
 parser应当输出如下结构体：
 struct ParsedURL
 {
@@ -15,7 +17,7 @@ struct ParsedURL
 类型为map<string,string>的变量query_params默认值为空
 如果url在解析过程中发现是错误的，则应当返回一个值全为默认的结构体
 
- - 有关随机生成合法url的结构问题
+- 有关随机生成合法url的结构问题
 在parsed_url.cpp文件中定义了函数std::string ParsedURL_to_url(ParsedURL& parsed_url)，它将执行如下流程：
 1.直接以protocol为开头，如果协议为file则跟上:///，否则跟上://
 2.加上hostname

@@ -2,7 +2,7 @@
 
 #include "tested_parser.h"
 
-//接口的实现
+//a simple parser
 ParsedURL parser_test(std::string url)
 {
     ParsedURL parsed_url;

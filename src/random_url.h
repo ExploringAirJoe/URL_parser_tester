@@ -41,9 +41,11 @@
 
 #define FRAGMENT_STRONG_LEGAL 2
 
-void test_random_legal_url();//测试随机合法url
+#define RANDOM_TEST_TIMES 10
 
-void test_random_illegal_url();//测试随机非法url
+std::pair<int, int> test_random_legal_url();//测试随机合法url
+
+std::pair<int, int> test_random_illegal_url();//测试随机非法url
 
 std::string generate_random_illegal_url();//随机生成一个指定类型非法url
 

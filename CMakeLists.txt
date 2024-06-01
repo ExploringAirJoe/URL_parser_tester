@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(URL_parser_debugger)
+project(URL_parser_tester)
 
 # source files
 aux_source_directory(./src SOURCES)
@@ -9,4 +9,4 @@ aux_source_directory(./src SOURCES)
 include_directories(./include)
 
 # executable target
-add_executable(URL_parser_debugger ${SOURCES})
+add_executable(URL_parser_tester ${SOURCES})
