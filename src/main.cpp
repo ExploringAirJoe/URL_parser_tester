@@ -32,10 +32,10 @@ int main()
 	std::pair<int, int> rip = test_random_illegal_url();
 	std::cout << "\033[34m" << "[" << "\033[33m" << rip.first << "\033[34m" << "/" << "\033[33m" << rip.second << "\033[34m" << "]" << "\033[0m" << " cases passed." << std::endl << std::endl;
 	
-	std::cout << "for basic legal url, " << "\033[34m" << blp.first << "\033[33m" << "/" << "\033[34m" << blp.second << "\033[0m" << " cases passed." << std::endl;
-	std::cout << "for basic illegal url, " << "\033[34m" << bip.first << "\033[33m" << "/" << "\033[34m" << bip.second << "\033[0m" << " cases passed." << std::endl;
-	std::cout << "for random legal url, " << "\033[34m" << rlp.first << "\033[33m" << "/" << "\033[34m" << rlp.second << "\033[0m" << " cases passed." << std::endl;
-	std::cout << "for random illegal url, " << "\033[34m" << rip.first << "\033[33m" << "/" << "\033[34m" << rip.second << "\033[0m" << " cases passed." << std::endl;
+	std::cout << "for basic legal url, " << "\033[33m" << blp.first << "\033[34m" << "/" << "\033[33m" << blp.second << "\033[0m" << " cases passed." << std::endl;
+	std::cout << "for basic illegal url, " << "\033[33m" << bip.first << "\033[34m" << "/" << "\033[33m" << bip.second << "\033[0m" << " cases passed." << std::endl;
+	std::cout << "for random legal url, " << "\033[33m" << rlp.first << "\033[34m" << "/" << "\033[33m" << rlp.second << "\033[0m" << " cases passed." << std::endl;
+	std::cout << "for random illegal url, " << "\033[33m" << rip.first << "\033[34m" << "/" << "\033[33m" << rip.second << "\033[0m" << " cases passed." << std::endl;
 
 	return 0;
 }

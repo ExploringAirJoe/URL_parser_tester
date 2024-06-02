@@ -172,68 +172,73 @@ std::pair<int, int> test_random_illegal_url()
 //随机生成一个指定类型非法url
 std::string generate_random_illegal_url()
 {
-    std::string url;
-    int total_error = 0;
-    bool is_wrong = false;
+    if (rand() % 7) {
+        std::string url;
+        int total_error = 0;
+        bool is_wrong = false;
 
-    // Generate random illegal protocol
-    is_wrong = rand() % 2;
-    total_error += is_wrong;
-    std::string random_protocol = generate_random_protocol(is_wrong);
+        // Generate random illegal protocol
+        is_wrong = rand() % 2;
+        total_error += is_wrong;
+        std::string random_protocol = generate_random_protocol(is_wrong);
 
-    // Generate random illegal hostname
-    is_wrong = rand() % 2;
-    total_error += is_wrong;
-    std::string random_hostname = generate_random_hostname(is_wrong);
+        // Generate random illegal hostname
+        is_wrong = rand() % 2;
+        total_error += is_wrong;
+        std::string random_hostname = generate_random_hostname(is_wrong);
 
-    // Generate random illegal port
-    is_wrong = rand() % 2;
-    total_error += is_wrong;
-    int random_port = generate_random_port(is_wrong);
+        // Generate random illegal port
+        is_wrong = rand() % 2;
+        total_error += is_wrong;
+        int random_port = generate_random_port(is_wrong);
 
-    // Generate random illegal path
-    is_wrong = rand() % 2;
-    total_error += is_wrong;
-    std::string random_path = generate_random_path(is_wrong);
+        // Generate random illegal path
+        is_wrong = rand() % 2;
+        total_error += is_wrong;
+        std::string random_path = generate_random_path(is_wrong);
 
-    // Generate random illegal query params
-    is_wrong = rand() % 2;
-    total_error += is_wrong;
-    std::map<std::string, std::string> random_query_params = generate_random_query_params(is_wrong);
+        // Generate random illegal query params
+        is_wrong = rand() % 2;
+        total_error += is_wrong;
+        std::map<std::string, std::string> random_query_params = generate_random_query_params(is_wrong);
 
-    // Generate random illegal fragment
-    is_wrong = rand() % 2;
-    total_error += is_wrong;
-    std::string random_fragment = generate_random_fragment(is_wrong);
+        // Generate random illegal fragment
+        is_wrong = rand() % 2;
+        total_error += is_wrong;
+        std::string random_fragment = generate_random_fragment(is_wrong);
 
-    // Construct the illegal url
-    url = random_protocol;
-    if (total_error)
-    {
-        url+=(rand() % 7 ? "://" : ":/");
-    }
-    else
-    {
-        url += (rand() % 2 ? "" : ":////");
-    }
-    url += random_hostname + ((random_port == -1) ? "" : (":" + std::to_string(random_port))) + random_path;
+        // Construct the illegal url
+        url = random_protocol;
+        if (total_error)
+        {
+            url+=(rand() % 7 ? "://" : ":/");
+        }
+        else
+        {
+            url += (rand() % 2 ? "" : ":////");
+        }
+        url += random_hostname + ((random_port == -1) ? "" : (":" + std::to_string(random_port))) + random_path;
 
-    if (!random_query_params.empty()) {
-        url += "?";
-        for (auto it = random_query_params.begin(); it != random_query_params.end(); ++it) {
-            url += url_encode(it->first) + "=" + url_encode(it->second);
-            if (std::next(it) != random_query_params.end()) {
-                url += "&";
+        if (!random_query_params.empty()) {
+            url += "?";
+            for (auto it = random_query_params.begin(); it != random_query_params.end(); ++it) {
+                url += url_encode(it->first) + "=" + url_encode(it->second);
+                if (std::next(it) != random_query_params.end()) {
+                    url += "&";
+                }
             }
         }
-    }
 
-    if (!random_fragment.empty())
-    {
-        url += "#" + random_fragment;
-    }
+        if (!random_fragment.empty())
+        {
+            url += "#" + random_fragment;
+        }
 
-    return url;
+        return url;
+    } else {
+        return generate_random_string(rand() % 100 + 1);
+    }
+    
 }
 
 //随机生成长度为length的字符串，以大小写字母和数字为字符集
@@ -280,7 +285,7 @@ std::string generate_random_protocol(int kind)
         protocol = legal_protocol[rand() % legal_protocol->length()];
         break;
     case PROTOCOL_ILLEGAL:
-        protocol = "";
+        protocol = rand() % 2 ? generate_random_string(rand() % 10 + 50) : "";
         break;
     case PROTOCOL_STRONG_LEGAL:
         protocol = generate_random_string(rand() % 20 + 1);
