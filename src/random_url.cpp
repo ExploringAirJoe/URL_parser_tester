@@ -515,7 +515,7 @@ std::map<std::string, std::string> generate_random_query_params(int kind)
         for (int i = 0; i < count; i++)
         {
             param = generate_random_string(rand() % 10 + 1);
-            value = generate_random_strong_string(rand() % 10 + 0);
+            value = generate_random_strong_string(rand() % 10 + 1);
             query_params[param] = value;
         }
         break;
